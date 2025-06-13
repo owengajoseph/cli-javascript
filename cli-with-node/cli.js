@@ -1,6 +1,4 @@
-import { isUtf8 } from 'node:buffer';
 import { writeFileSync, readFile } from 'node:fs'
-import { join } from 'node:path';
 
 const books =
 {
