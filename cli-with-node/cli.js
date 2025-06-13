@@ -15,7 +15,7 @@ readFile('./data.json', 'utf8', (err, data) => {
     console.log(temp)
 })
 
-
+//TODOS:work on extracting data from the command line 
 
 /* 
 {
