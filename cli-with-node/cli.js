@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import readline from 'node:readline';
 
-fs.readFile('./data.txt', 'utf8', (err, data) => {
+fs.readFileSync('./data.json', 'utf8', (err, data) => {
     if (err) {
 
         console.log(err);
@@ -12,17 +12,62 @@ fs.readFile('./data.txt', 'utf8', (err, data) => {
 })
 
 //TODOS:work on extracting data from the command line 
+function addTask(name) {
+    const matches = name.match(/(["'])(?:(?=(\\?))\2.)*?\1/g);
+    console.log(matches)
 
+}
 
 //reads data from the command line 
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
 });
-rl.question(`What's your name?`, name => {
-    if (name.includes('add') || name.includes('update') || name('delete'))
+rl.question(`task-cli`, name => {
+    if (name.includes('add')) {
+        addTask(name)
+    }
 
-        console.log("handled first logic");
+    if (name.includes('update')) {
+
+    }
+
+    if (name.includes('update')) {
+
+    }
+
+
+    if (name.includes('delete')) {
+
+    }
+
+
+    if (name.includes(name.includes('mark-in-progress'))) {
+
+    }
+
+
+    if (name.includes('mark-done')) {
+
+    }
+
+
+
+    if (name.includes('list')) {
+
+    }
+
+
+    if (name.includes('list todo')) {
+
+
+    }
+
+
+    if (name.includes('list in-progress')) {
+
+    }
+    console.log("please use the right commands ");
     rl.close();
 });
 
