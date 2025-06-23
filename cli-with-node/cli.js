@@ -22,72 +22,31 @@ function addTask(data) {
     console.log(todoData);
     //i have pushed the data.
 }
-
-//reads data from the command line
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-});
-rl.question(`task-cli`, data => {
-    if (data.includes('add')) {
-        addTask(data);
-    }
-
-    if (data.includes('update')) {
-
-    }
-
-    if (data.includes('update')) {
-
-    }
+let rl;
+async function foo() {
 
 
-    if (data.includes('delete')) {
+    rl = readline.createInterface({ input, output });
 
-    }
+    const answer = await rl.question('What do you think of Node.js? ');
 
-
-    if (data.includes(data.includes('mark-in-progress'))) {
-
-    }
+    console.log(answer);
 
 
-    if (data.includes('mark-done')) {
-
-    }
-
-
-
-    if (data.includes('list')) {
-
-    }
-
-
-    if (data.includes('list todo')) {
-
-
-    }
-
-
-    if (data.includes('list in-progress')) {
-        //TODOS:when he wants the list of the data we write then we list
-        //or if there is and asynchronous function we can use that.
-    }
-    // console.log("please use the right commands ");
+    console.log(`Thank you for your valuable feedback: ${answer}`);
     rl.close();
 
 
+
+
+}
+
+
+
+foo();
+
+rl.on('close', () => {
+    console.log("closed successfully");
 });
 
-//how im i going to handle the writing of the data.
-//
-
-// {
-//     let jsonData = JSON.stringify(books);
-//     try {
-//         writeFileSync('./data.json', jsonData, 'utf-8')
-//     } catch (err) {
-//         console.log(err)
-//     }
-// }
 
