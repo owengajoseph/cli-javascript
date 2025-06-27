@@ -1,52 +1,51 @@
-// import fs from 'node:fs'
+import { createInterface } from 'node:readline';
+import { exit, stdin, stdout } from 'node:process';
 import { readFileSync } from 'node:fs';
-import * as readline from 'node:readline/promises';
-import { stdin as input, stdout as output } from 'node:process';
 
-let data = readFileSync('./data.json', 'utf8', (err, data) => {
-    if (err) {
+// TODOS:the app works well the remaining part is to write the data in a file and get the other commands and hanle illigal commands.
+let data = JSON.parse(readFileSync('./data.json', 'utf8', (err, data) => {
+  if (err) {
 
-        console.log(err);
-        return;
-    }
+    console.log(err);
+    return;
+  }
 
-})
+}))
 
 console.log(data)
 
 
 function addTask(data) {
-    const matches = data.match(/(["'])(?:(?=(\\?))\2.)*?\1/gi);
-    console.log(matches);
-    data.add.push(matches[0])
-    console.log(todoData);
-    //i have pushed the data.
-}
-let rl;
-async function foo() {
-
-
-    rl = readline.createInterface({ input, output });
-
-    const answer = await rl.question('What do you think of Node.js? ');
-
-    console.log(answer);
-
-
-    console.log(`Thank you for your valuable feedback: ${answer}`);
-    rl.close();
-
-
-
-
+  const matches = data.match(/(["'])(?:(?=(\\?))\2.)*?\1/gi);
+  console.log(matches);
+   data.add.push(matches[0]);
+   console.log(todoData);
+  return;
+  //i have pushed the data.
 }
 
 
 
-foo();
 
-rl.on('close', () => {
-    console.log("closed successfully");
+
+
+const rl = createInterface({
+  input: stdin,
+  output: stdout,
+  prompt: 'task-cli ',
 });
 
+rl.prompt();
 
+rl.on('line', (line) => {
+  console.log(line)
+  if (line.includes('adds')) {
+
+    addTask(line);
+  }
+
+  rl.prompt();
+}).on('close', () => {
+  console.log('Have a great day!');
+  exit(0);
+});
